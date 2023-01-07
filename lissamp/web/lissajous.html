@@ -55,7 +55,7 @@
             <input type="number" id="animationSpeed2" min="1" max="100" value="50" step="1" oninput="this.previousElementSibling.value = this.value">
           </div>
           <div class="option">
-            <label><span>Animation Type</span></label>
+            <label><span>Phase Animation Type</span></label>
             <!-- TODO: change width of buttons! -->
             <div id="animationRadio">
               <input type="radio" id="radioX" name="animationType" value="x" checked>
@@ -67,12 +67,21 @@
             </div>
           </div>
           <div class="option">
-            <label><span>Color</span></label>
-            <input type="color" id="animationColor" value="#ffffff">
+            <label><span>Phase Animation Toggle</span></label>
+            <input type="checkbox" id="animationToggle" checked><label for="animationToggle">ô¿ô</label>
           </div>
           <div class="option">
-            <label><span>Animation Toggle</span></label>
-            <input type="checkbox" id="animationToggle" checked><label for="animationToggle">ô¿ô</label>
+            <label><span>Sample Animation Speed</span></label>
+            <input type="range" id="animationSampleSpeed" min="1" max="50" value="1" step="1" oninput="this.nextElementSibling.value = this.value">
+            <input type="number" id="animationSampleSpeed2" min="1" max="50" value="1" step="1" oninput="this.previousElementSibling.value = this.value">
+          </div>
+          <div class="option">
+            <label><span>Sample Animation Toggle</span></label>
+            <input type="checkbox" id="animationSampleToggle" checked><label for="animationSampleToggle">:3</label>
+          </div>
+          <div class="option">
+            <label><span>Color</span></label>
+            <input type="color" id="animationColor" value="#ffffff">
           </div>
         </div>
         <button id="animateButton" class="collapsable">🎬 animate</button>

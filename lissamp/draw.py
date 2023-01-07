@@ -152,6 +152,8 @@ if __name__ == "__main__":
     parser.add_argument("--animate", action="store_true", help="enable animation by sweeping phase")
     parser.add_argument("--animation-type", type=str, default="XY", choices=["X", "XY", "Y"], help="type of animation to perform")
     parser.add_argument("--animation-speed", type=float, default=0.1, help="speed of animation (degrees per frame)")
+    parser.add_argument("--animate-sample", action="store_true", help="enable animation by sweeping sample")
+    parser.add_argument("--animation-sample-speed", type=int, default=1, help="speed of sample animation (sample increment per frame)")
     parser.add_argument("--no-watermark", action="store_true", help="disable watermark")
     args = parser.parse_args()
 
@@ -161,6 +163,8 @@ if __name__ == "__main__":
                              animate=args.animate,
                              animation_type=args.animation_type,
                              animation_speed=args.animation_speed,
+                             animate_sample=args.animation_sample,
+                             animation_sample_speed=args.animation_sample_speed,
                              watermark=not args.no_watermark,
                              )
     drawer.draw(args.output_path)

@@ -134,8 +134,9 @@ async function drawLissajous(gl,
                              x_phase=0,
                              y_phase=0) {
   var vertices = [];
-  for (var i = 0; i <= samples; i++) {
-    var w = (2 * Math.PI * i) / samples;
+  var sampleFloor = Math.floor(samples);
+  for (var i = 0; i <= sampleFloor; i++) {
+    var w = (2 * Math.PI * i) / sampleFloor;
     var x = Math.sin(x_freq * w + degrees_to_radians(x_phase));
     var y = Math.sin(y_freq * w + degrees_to_radians(y_phase));
     vertices.push(x, y, 0)
@@ -247,7 +248,25 @@ window.addEventListener('DOMContentLoaded', function () {
       setInput(input_id, phase)
       options.dispatchEvent(new Event('input'));
     }
+
+    if (document.querySelector('#animationSampleToggle').checked) {
+      var animationSampleSpeed = document.getElementById('animationSampleSpeed').value;
+      var sample = document.getElementById('samples').value;
+      console.log(sample)
+      sample = Number(sample) + 1*(animationSampleSpeed / 7);
+      console.log((animationSampleSpeed / 7))
+      console.log(sample)
+      if(sample > 5000) { sample = 0; }
+      // don't use setInput bc it would trigger a duplicate draw here
+      document.getElementById('samples').setAttribute("value", sample);
+      document.getElementById('samples').dispatchEvent(new Event('input'));
+      options.dispatchEvent(new Event('input'));
+      console.log("New val:", document.getElementById('samples').value);
+      return;
+    }
+
   }
+
 
   const rotatorInterval = setInterval(rotate, 1000/fps);
 
